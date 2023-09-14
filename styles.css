@@ -1,4 +1,14 @@
 
+
+.listings{
+   height:300px;
+   width:300px;
+   border:10px;
+   padding:5px;
+   margin:5px;
+}
+
+
 body {
    background-color: light-grey;
 }
