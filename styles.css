@@ -7,17 +7,20 @@
    padding:5px;
    margin:5px;
    align:center;
+   outline: 2px Solid black;
+   display: flexbox;
+   justify-content: row;
 }
 
 
 body {
-   background-color: rgb(140, 130, 130);
+   background-color: rgb(100, 100, 100);
 }
 
 nav {
     height: 80px;
     width: 100%;
-    background-color: green;
+    background-color: rgb(130, 130, 130);
 }
 h1 {
     text-align: center;
