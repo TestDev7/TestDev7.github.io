@@ -1,6 +1,6 @@
 body
 {
-	background-color:rgba(215, 215, 215, 1);
+	background-color:rgba(150, 115, 90, 1);
 }
 .item
 {
@@ -57,7 +57,25 @@ h1
 .listings-img
 {
 	display:flex;
-	width:300px;
-	height:300px;
+	width:200px;
+	height:150px;
+	background-color:blue;
 	
+}
+@media screen and (max-width: 800px) {
+	.listings-container
+	{
+		display:flex; 
+		align-content:center;
+		flex-direction: column;
+	}
+		.listings
+		{
+			width:75%;
+			padding-top:25%;
+		}
+		.listing-img
+		{
+			width:75%;
+		}
 }
