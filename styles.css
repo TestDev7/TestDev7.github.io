@@ -62,7 +62,7 @@ h1
 	background-color:blue;
 	
 }
-@media screen and (max-width: 600pt) {
+@media screen and (max-width: 600px) {
 	.listings-container
 	{
 		display:flex; 
