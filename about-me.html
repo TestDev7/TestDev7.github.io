@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Vector resultant calculator</title>
+<style>
+* {
+font-family: verdana;
+}
+h1 {
+text-align: center;
+}
+button {
+position: fixed;
+left: 45%;
+right: auto;
+margin: 0;
+padding: 0;
+}
+</style>
+
+</head>
+
+<body>
+<h1>Evan Monroe's Vector Resultant Calculator!</h1>
+<p id="demo"></p>
+<div id="vector1div">
+    <label for="vector1Magnitude">Enter the first vectors magnitude here</label>
+  <input type="text" id="vector1Magnitude" name="vector1Magnitude" > <br> <br>
+  
+     <label for="vector1Zangle">Enter the first vectors angle of elevation here</label>
+  <input type="text" id="vector1Zangle" name="vector1Zangle" > <br> <br>
+  
+    <label for="vector1Xangle">Enter the first vectors direction off of North here</label>
+  <input type="text" id="vector1Xangle" name="vector1Xangle" >
+</div>
+
+<br> <br> <br> <br>
+
+<div id="vector2div">
+    <label for="vector2Magnitude">Enter the second vectors magnitude here</label>
+  <input type="text" id="vector2Magnitude" name="vector2Magnitude" > <br> <br>
+  
+     <label for="vector2Zangle">Enter the second vectors angle of elevation here</label>
+  <input type="text" id="vector2Zangle" name="vector2Zangle" > <br> <br>
+  
+    <label for="vector2Xangle">Enter the second vectors direction off of North here</label>
+  <input type="text" id="vector2Xangle" name="vector2Xangle" >
+</div>
+
+<br> <br> <br>
+
+<button onclick="calculateFunction()">Calculate</button>
+
+
+
+
+
+
+
+<script>
+let vector1Magnitude = document.getElementById("vector1Magnitude").value;
+let vector1Zangle = document.getElementById("vector1Zangle").value;
+let vector1Xangle = document.getElementById("vector1Xangle").value;
+//Declaring the first vector's inputs to variable//
+
+let vector1Xmagnitude = null;
+let vector1Ymagnitude = null;
+let vector1Zmagnitude = null;
+//Declaring vectors 1's calculation variables//
+
+let vector2Magnitude = document.getElementById("vector2Magnitude").value;
+let vector2Zangle = document.getElementById("vector2Zangle").value;
+let vector2Xangle = document.getElementById("vector2Xangle").value;
+//Declaring the second vector's inputs to variable//
+
+let vector2Xmagnitude = null;
+let vector2Ymagnitude = null;
+let vector2Zmagnitude = null;
+//Declaring vectors 2's calculation variables//
+
+
+function calculateFunction() {
+vector1Magnitude = document.getElementById("vector1Magnitude").value;
+vector1Zangle = document.getElementById("vector1Zangle").value;
+vector1Xangle = document.getElementById("vector1Xangle").value;
+
+vector2Magnitude = document.getElementById("vector2Magnitude").value;
+vector2Zangle = document.getElementById("vector2Zangle").value;
+vector2Xangle = document.getElementById("vector2Xangle").value;
+
+console.log(vector1Magnitude);
+console.log(vector1Zangle);
+console.log(vector1Xangle);
+
+console.log(vector2Magnitude);
+console.log(vector2Zangle);
+console.log(vector2Xangle);
+
+vector1Zmagnitude = vector1Magnitude * Math.sin(vector1Zangle)
+console.log(vector1Zmagnitude);
+
+vector1Xmagnitude = vector1Magnitude * Math.cos(vector1Zangle)
+console.log(vector1Xmagnitude);
+
+vector1Zmagnitude = vector1Xmagnitude * Math.sin(vector1Xangle)
+console.log(vector1Zmagnitude);
+}
+
+
+</script>
+</body>
+</html>
+
+
