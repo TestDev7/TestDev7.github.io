@@ -10,11 +10,26 @@ h1 {
 text-align: center;
 }
 button {
-position: fixed;
+position: absolute;
 left: 45%;
 right: auto;
 margin: 0;
 padding: 0;
+}
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
 }
 </style>
 
@@ -25,7 +40,7 @@ padding: 0;
 <p id="demo"></p>
 <div id="vector1div">
     <label for="vector1Magnitude">Enter the first vectors magnitude here</label>
-  <input type="text" id="vector1Magnitude" name="vector1Magnitude" > <br> <br>
+  <input type="text" id="vector1Magnitude" value="1" name="vector1Magnitude" > <br> <br>
   
      <label for="vector1Zangle">Enter the first vectors angle of elevation here</label>
   <input type="text" id="vector1Zangle" name="vector1Zangle" > <br> <br>
@@ -47,9 +62,45 @@ padding: 0;
   <input type="text" id="vector2Xangle" name="vector2Xangle" >
 </div>
 
-<br> <br> <br>
+<br> 
 
 <button onclick="calculateFunction()">Calculate</button>
+<br>
+<p id="finalVector">the final vector will show up here</p>
+<br> <br> <br>
+<table>
+  <tr>
+    <th></th>
+    <th>Vector 1</th>
+    <th>Vector 2</th>
+    <th>Resultant Vector</th>
+  </tr>
+  <tr>
+    <td>Z Displacement</td> 
+    <td id="v1a"></td>
+    <td id="v2a"></td>
+    <td id="v3a"></td>
+  </tr>
+  <tr>
+    <td>XY Displacement</td>
+    <td id="v1b"></td>
+    <td id="v2b"></td>
+    <td id="v3b"></td>
+  </tr>
+  <tr>
+    <td>X Displacement</td>
+    <td id="v1c"></td>
+    <td id="v2c"></td>
+    <td id="v3c"></td>
+  </tr>
+  <tr>
+    <td>Y Displacement</td>
+    <td id="v1d"></td>
+    <td id="v2d"></td>
+    <td id="v3d"></td>
+  </tr>
+
+</table>
 
 
 
@@ -58,56 +109,109 @@ padding: 0;
 
 
 <script>
+let vector1Z = null;
+let vector1XY = null;
+let vector1X = null;
+let vector1Y = null;
+
+
+let vector2Z = null;
+let vector2XY = null;
+let vector2X = null;
+let vector2Y = null;
+
+
+let vector3Z = null;
+let vector3XY = null;
+let vector3X = null;
+let vector3Y = null;
+
+let vector3Magnitude = null;
+let vector3Zangle = null;
+let vector3Xangle = null;
+
+
+function calculateFunction() {
 let vector1Magnitude = document.getElementById("vector1Magnitude").value;
 let vector1Zangle = document.getElementById("vector1Zangle").value;
 let vector1Xangle = document.getElementById("vector1Xangle").value;
-//Declaring the first vector's inputs to variable//
-
-let vector1Xmagnitude = null;
-let vector1Ymagnitude = null;
-let vector1Zmagnitude = null;
-//Declaring vectors 1's calculation variables//
+//Vector 1 input//
 
 let vector2Magnitude = document.getElementById("vector2Magnitude").value;
 let vector2Zangle = document.getElementById("vector2Zangle").value;
 let vector2Xangle = document.getElementById("vector2Xangle").value;
-//Declaring the second vector's inputs to variable//
+//Vector 2 input//
 
-let vector2Xmagnitude = null;
-let vector2Ymagnitude = null;
-let vector2Zmagnitude = null;
-//Declaring vectors 2's calculation variables//
+vector1Z = vector1Magnitude * Math.sin(vector1Zangle * (Math.PI / 180)) 
+console.log(vector1Z)
+
+vector1XY = vector1Magnitude * Math.cos(vector1Zangle * (Math.PI / 180)) 
+console.log(vector1XY)
+
+vector1X = vector1XY * Math.cos(vector1Xangle * (Math.PI / 180)) 
+console.log(vector1X)
+
+vector1Y = vector1XY * Math.sin(vector1Xangle * (Math.PI / 180)) 
+console.log(vector1Y)
+
+//vector 1 calculations//
 
 
-function calculateFunction() {
-vector1Magnitude = document.getElementById("vector1Magnitude").value;
-vector1Zangle = document.getElementById("vector1Zangle").value;
-vector1Xangle = document.getElementById("vector1Xangle").value;
+vector2Z = vector2Magnitude * Math.sin(vector2Zangle * (Math.PI / 180)) 
+console.log(vector2Z)
 
-vector2Magnitude = document.getElementById("vector2Magnitude").value;
-vector2Zangle = document.getElementById("vector2Zangle").value;
-vector2Xangle = document.getElementById("vector2Xangle").value;
+vector2XY = vector2Magnitude * Math.cos(vector2Zangle * (Math.PI / 180)) 
+console.log(vector2XY)
 
-console.log(vector1Magnitude);
-console.log(vector1Zangle);
-console.log(vector1Xangle);
+vector2X = vector2XY * Math.cos(vector2Xangle * (Math.PI / 180)) 
+console.log(vector2X)
 
-console.log(vector2Magnitude);
-console.log(vector2Zangle);
-console.log(vector2Xangle);
+vector2Y = vector2XY * Math.sin(vector2Xangle * (Math.PI / 180)) 
+console.log(vector2Y)
 
-vector1Zmagnitude = vector1Magnitude * Math.sin(vector1Zangle)
-console.log(vector1Zmagnitude);
+//vector 2 calculations//
 
-vector1Xmagnitude = vector1Magnitude * Math.cos(vector1Zangle)
-console.log(vector1Xmagnitude);
+vector3Z = vector1Z + vector2Z;
 
-vector1Zmagnitude = vector1Xmagnitude * Math.sin(vector1Xangle)
-console.log(vector1Zmagnitude);
+vector3X = vector1X + vector2X;
+vector3Y = vector1Y + vector2Y;
+vector3XY = Math.sqrt(Math.pow(vector3Y, 2) + Math.pow(vector3X, 2));
+//vector 3 components//
+
+vector3Zangle = Math.atan(vector3Z / vector3XY);
+vector3Xangle = Math.atan(vector3X / vector3Y);
+vector3Magnitude = Math.sqrt(Math.pow(vector3Z, 2) + Math.pow(vector3XY, 2));
+
+
+
+document.getElementById("v1a").innerHTML = vector1Z;
+document.getElementById("v1b").innerHTML = vector1XY;
+document.getElementById("v1c").innerHTML = vector1X;
+document.getElementById("v1d").innerHTML = vector1Y;
+//vector 1 in table //
+
+
+document.getElementById("v2a").innerHTML = vector2Z;
+document.getElementById("v2b").innerHTML = vector2XY;
+document.getElementById("v2c").innerHTML = vector2X;
+document.getElementById("v2d").innerHTML = vector2Y;
+//vector 2 in table //
+
+
+document.getElementById("v3a").innerHTML = vector3Z;
+document.getElementById("v3b").innerHTML = vector3XY;
+document.getElementById("v3c").innerHTML = vector3X;
+document.getElementById("v3d").innerHTML = vector3Y;
+//vector 3 in table //
+
+
 }
 
 
 </script>
+</body>
+</html>
+
 </body>
 </html>
 
