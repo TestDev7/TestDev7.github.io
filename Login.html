@@ -178,8 +178,11 @@ vector3Y = vector1Y + vector2Y;
 vector3XY = Math.sqrt(Math.pow(vector3Y, 2) + Math.pow(vector3X, 2));
 //vector 3 components//
 
-vector3Zangle = Math.atan(vector3Z / vector3XY);
-vector3Xangle = Math.atan(vector3X / vector3Y);
+vector3Zangle =
+  Math.atan(vector3Z / vector3XY) * (180 / Math.PI);
+vector3Xangle =
+  Math.atan(vector3X / vector3Y) * (180 / Math.PI);
+
 vector3Magnitude = Math.sqrt(Math.pow(vector3Z, 2) + Math.pow(vector3XY, 2));
 
 
@@ -204,10 +207,16 @@ document.getElementById("v3c").innerHTML = vector3X;
 document.getElementById("v3d").innerHTML = vector3Y;
 //vector 3 in table //
 
-document.getElementById("finalVector").innerHTML = vector3Magnitude + " " + vector3Zangle + " " + vector3Xangle + " ";
+document.getElementById("finalVector").innerHTML =
+"Vectors Magnitude: "  + vector3Magnitude + ", " +
+"Vectors Angle on Z-axis: " + vector3Zangle + ", " +
+"Vectors X-axis Angle " + vector3Xangle + " ";
 }
 
 
 </script>
 </body>
 </html>
+
+
+
