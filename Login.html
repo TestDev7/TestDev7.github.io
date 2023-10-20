@@ -175,7 +175,7 @@ vector3Z = vector1Z + vector2Z;
 
 vector3X = vector1X + vector2X;
 vector3Y = vector1Y + vector2Y;
-vector3XY = Math.sqrt(Math.pow(vector3Y, 2) + Math.pow(vector3X, 2));
+vector3XY = vector3Y / (Math.sin(vector3Xangle) * Math.PI / 180);
 //vector 3 components//
 
 vector3Zangle =
@@ -183,7 +183,7 @@ vector3Zangle =
 vector3Xangle =
   Math.atan(vector3Y / vector3X) * (180 / Math.PI);
 
-vector3Magnitude = Math.sqrt(Math.pow(vector3Z, 2) + Math.pow(vector3XY, 2));
+vector3Magnitude = vector3Z / (Math.sin(vector3Zangle) * Math.PI / 180);
 
 
 
